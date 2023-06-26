@@ -14,10 +14,8 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 # membaca data set dari file csv
-from google.colab import drive
-drive.mount('/content/drive')
 
-path = "/content/drive/MyDrive/Colab Notebooks/seattle-weather.csv"
+path = "https://github.com/PangestuSES/Jst/blob/main/seattle-weather.csv"
 df = pd.read_csv(path)
 
 df.head(10)
@@ -29,17 +27,6 @@ import seaborn as sns
 sns.countplot(data=df,x="weather")
 plt.show();
 
-# Melihat Persentase taget dari dataset
-countrain=len(df[df.weather=="rain"])
-countsun=len(df[df.weather=="sun"])
-countdrizzle=len(df[df.weather=="drizzle"])
-countsnow=len(df[df.weather=="snow"])
-countfog=len(df[df.weather=="fog"])
-print("Percent of Rain\t\t: {:.2f}%".format((countrain/(len(df.weather))*100)))
-print("Percent of Sun\t\t: {:.2f}%".format((countsun/(len(df.weather))*100)))
-print("Percent of Drizzle\t: {:.2f}%".format((countdrizzle/(len(df.weather))*100)))
-print("Percent of Snow\t\t: {:.2f}%".format((countsnow/(len(df.weather))*100)))
-print("Percent of Fog\t\t: {:.2f}%".format((countfog/(len(df.weather))*100)))
 
 #Pembulatan Precipitation
 pengendapan = []
@@ -166,7 +153,7 @@ enc = LabelEncoder()
 
 # weather [0 -> Drizzle, 1 -> fog, 2-> rain, 3 -> snow, 4 -> sun]
 df.weather = enc.fit_transform(df.weather.values)
-display(df.iloc[192])
+
 
 #data
 df.head(200)
